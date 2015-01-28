@@ -313,8 +313,8 @@ Author: Peter Waher
 			<di>
 				<dt>Thing</dt>
 				<dd>
-					Internet of Things basically consists of Things connected to the Internet. Things can be any device, sensor, actuator etc., that can have an
-					Internet connection.
+					Internet of Things basically consists of Things connected to the Internet. Things can be any device, sensor, actuator, service etc., that can have an
+					Internet connection. A Thing does not need to represent a physical device but can also be a higher level service living in an application server of some sort.
 				</dd>
 			</di>
 			<di>
@@ -620,12 +620,12 @@ Author: Peter Waher
        from='thing@clayster.com/imc'
        to='discovery.clayster.com'
        id='1'>
-      <register xmlns='urn:xmpp:iot:discovery'>
-          <str name='SN' value='394872348732948723'/>
-          <str name='MAN' value='www.ktc.se'/>
-          <str name='MODEL' value='IMC'/>
-          <num name='V' value='1.2'/>
-          <str name='KEY' value='4857402340298342'/>
+       <register xmlns='urn:xmpp:iot:discovery'>
+          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
       </register>
    </iq>
    
@@ -635,11 +635,10 @@ Author: Peter Waher
        id='1'/>]]>
 			</example>
 			<p>
-				There are two types of tags: Tags with string values and tags with numerical values. The distinction is important, since the type of value affects how
-				comparisons are made later when performing searches in the registry.
-			</p>
+                The register messages is contains a set of property tags. The properties describe the Thing that is registered in the form of triples ([Thing] &lt;relation&gt; [value]). The property's <strong>id</strong> attribute describes the relation with with Thing (i.e. has serial number or has model). A property can either have a text child element that contains the value or a <strong>resource</strong> attribute that refers to an object defined elsewhere.
+            </p>
 			<p>
-				The Thing should only register parameters required to be known by the owner of the Thing. Dynamic meta information must be avoided at this point.
+				The Thing should only register properties required to be known by the owner of the Thing. Dynamic meta information must be avoided at this point.
 				To claim the ownership of the Thing, the owner needs to present the same meta information as registered by the Thing. Before an owner has claimed
 				ownership of the Thing, it will not be returned in any search results. A list of predefined meta tag names can be found in the <link url='#tags'>Meta Tags</link>
 				section below.
@@ -679,11 +678,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='2'>
       <register xmlns='urn:xmpp:iot:discovery' selfOwned='true'>
-          <str name='SN' value='394872348732948723'/>
-          <str name='MAN' value='www.ktc.se'/>
-          <str name='MODEL' value='IMC'/>
-          <num name='V' value='1.2'/>
-          <str name='KEY' value='4857402340298342'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
       </register>
    </iq>
    
@@ -713,11 +712,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='3'>
       <register xmlns='urn:xmpp:iot:discovery' nodeId='imc1' sourceId='MeteringTopology'>
-          <str name='SN' value='394872348732948723'/>
-          <str name='MAN' value='www.ktc.se'/>
-          <str name='MODEL' value='IMC'/>
-          <num name='V' value='1.2'/>
-          <str name='KEY' value='4857402340298342'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
       </register>
    </iq>
    
@@ -748,17 +747,17 @@ Author: Peter Waher
 			</p>
 			<example caption='String to encode as a QR-code'>
 				<![CDATA[
-   IoTDisco;SN:394872348732948723;MAN:www.ktc.se;MODEL:IMC;#V:1.2;KEY:4857402340298342]]>
+                IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342]]>
 			</example>
 			<p>
 				Using UTF-8 encoding when generating the QR-code, this string returns the following QR-code:
 			</p>
 			<p>
-				<img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:www.ktc.se;MODEL:IMC;%23V:1.2;KEY:4857402340298342'/>
+                <img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342'/>
 			</p>
 			<p>
 				To generate a QR-code, Google Chart API can be used:
-				<link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:www.ktc.se;MODEL:IMC;%23V:1.2;KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:www.ktc.se;MODEL:IMC;%23V:1.2;KEY:4857402340298342</link>
+                <link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342</link>
 			</p>
 			<p>
 				<strong>Note:</strong> The hash sign (#) has been URL encoded to <strong>%23</strong> in the URL.
@@ -773,11 +772,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='4'>
       <mine xmlns='urn:xmpp:iot:discovery'>
-          <str name='SN' value='394872348732948723'/>
-          <str name='MAN' value='www.ktc.se'/>
-          <str name='MODEL' value='IMC'/>
-          <num name='V' value='1.2'/>
-          <str name='KEY' value='4857402340298342'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
       </mine>
    </iq>]]>
 			</example>
@@ -792,11 +791,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='4'>
       <mine xmlns='urn:xmpp:iot:discovery' public='false'>
-          <str name='SN' value='394872348732948723'/>
-          <str name='MAN' value='www.ktc.se'/>
-          <str name='MODEL' value='IMC'/>
-          <num name='V' value='1.2'/>
-          <str name='KEY' value='4857402340298342'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
       </mine>
    </iq>]]>
 			</example>
@@ -1044,7 +1043,7 @@ Author: Peter Waher
 				at this point, so that correct decisions can be made regarding to friendship, readout and control requests made by parties other than the owner.
 			</p>
 			<p>
-				Meta information updated in this way will only overwrite tags provided in the request, and leave other tags previously reported as is. To remove a string-valued tag,
+				Meta information updated in this way will only overwrite tags provided in the request, and leave other tags previously reported as is. To remove a property tag,
 				it should be updated with an empty value. It is also recommended that key meta information required to claim ownership of the Thing after a factory reset is
 				either removed, truncated or otherwise modified after it has been claimed so that third parties with physical access to a public Thing cannot hijack it by searching
 				for it, extracting its meta information from the registry, then resetting it and then claiming ownership of it.
@@ -1059,10 +1058,10 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <str name='KEY' value=''/>
-          <str name='CLASS' value='PLC'/>
-          <num name='LON' value='-71.519722'/>
-          <num name='LAT' value='-33.008055'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'/><!-- will be removed -->
+          <property id='http://xmpp-iot.github.io/xmpp-common#CLASS'>PLC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#LON'>-71.519722</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#LAT'>-33.008055</property>
       </update>
    </iq>]]>
 			</example>
@@ -1083,10 +1082,10 @@ Author: Peter Waher
              jid='rack@clayster.com'
              nodeId='imc1'
              sourceId='MeteringTopology'>
-          <str name='KEY' value=''/>
-          <str name='CLASS' value='PLC'/>
-          <num name='LON' value='-71.519722'/>
-          <num name='LAT' value='-33.008055'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'/><!-- will be removed -->
+          <property id='http://xmpp-iot.github.io/xmpp-common#CLASS'>PLC</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#LON'>-71.519722</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#LAT'>-33.008055</property>
       </update>
    </iq>]]>
 			</example>
@@ -1149,15 +1148,15 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <str name='ROOM' value='...'/>
-          <str name='APT' value='...'/>
-          <str name='BLD' value='...'/>
-          <str name='STREET' value='...'/>
-          <str name='STREETNR' value='...'/>
-          <str name='AREA' value='...'/>
-          <str name='CITY' value='...'/>
-          <str name='REGION' value='...'/>
-          <str name='COUNTRY' value='...'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#ROOM'/>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#APT'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#BLD'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#STREET'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#STREETNR'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#AREA'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#CITY'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#REGION'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#COUNTRY'>...</property>
       </update>
    </iq>]]>
 			</example>
@@ -1172,15 +1171,15 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='rack@clayster.com' nodeId='imc1' sourceId='MeteringTopology'>
-          <str name='ROOM' value='...'/>
-          <str name='APT' value='...'/>
-          <str name='BLD' value='...'/>
-          <str name='STREET' value='...'/>
-          <str name='STREETNR' value='...'/>
-          <str name='AREA' value='...'/>
-          <str name='CITY' value='...'/>
-          <str name='REGION' value='...'/>
-          <str name='COUNTRY' value='...'/>
+          <property id='http://xmpp-iot.github.io/xmpp-common#ROOM'/>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#APT'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#BLD'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#STREET'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#STREETNR'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#AREA'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#CITY'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#REGION'>...</property>
+          <property id='http://xmpp-iot.github.io/xmpp-common#COUNTRY'>...</property>
       </update>
    </iq>]]>
 			</example>
