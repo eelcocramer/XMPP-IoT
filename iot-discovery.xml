@@ -1070,8 +1070,8 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <property id='KEY'/><!-- will be removed -->
-          <property id='CLASS' value="PLC"/>
+          <property id='KEY' value=''/><!-- will be removed -->
+          <property id='CLASS' value='PLC'/>
           <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/>
           <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/>
       </update>
