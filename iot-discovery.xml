@@ -51,7 +51,17 @@ Author: Peter Waher
 			<jid>TBD</jid>
 			<uri>http://www-rnks.informatik.tu-cottbus.de/~rklauck</uri>
 		</author>
-		<revision>
+        <revision>
+            <version>0.4?</version>
+            <date>2015-02-04</date>
+            <initials>ec</initials>
+            <remark>
+                <p>
+                    Rewrote pieces that describe how the meta-information is formatted and how things are searched.
+                </p>
+            </remark>
+        </revision>
+        <revision>
 			<version>0.3</version>
 			<date>2014-11-11</date>
 			<initials>pw</initials>
@@ -621,11 +631,13 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='1'>
        <register xmlns='urn:xmpp:iot:discovery'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
+          <property id='SN' value="394872348732948723"/>
+          <property id='MAN' resource='http://www.ktc.se'/>
+          <property id='MODEL' value="IMC"/>
+          <property id='V' value="1.2" type="xsd:float"/>
+          <property id='KEY' value"4857402340298342"/>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='55.701'/>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='12.552'/>
       </register>
    </iq>
    
@@ -635,7 +647,7 @@ Author: Peter Waher
        id='1'/>]]>
 			</example>
 			<p>
-                The register messages is contains a set of property tags. The properties describe the Thing that is registered in the form of triples ([Thing] &lt;relation&gt; [value]). The property's <strong>id</strong> attribute describes the relation with with Thing (i.e. has serial number or has model). A property can either have a text child element that contains the value or a <strong>resource</strong> attribute that refers to an object defined elsewhere.
+                The register messages is contains a set of property tags. The properties describe the Thing that is registered in the form of triples ([Thing] &lt;relation&gt; [value]). The property's <strong>id</strong> attribute describes the relation with with Thing (i.e. has serial number or has model). The default namespace for the <strong>id</strong> attribute is <strong>http://xmpp-iot.github.io/xmpp-iot-common</strong>. A property can either have a <strong>value</strong> attribute contains the value or a <strong>resource</strong> attribute that refers to an object defined elsewhere. The type of the <strong>value</strong> attribute can be specified by adding an <strong>type</strong> attribute that specifies how the value should be intreted. It must use a data type from the xsd namespace (<a href="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</a>). If omited type is determined by the registry.
             </p>
 			<p>
 				The Thing should only register properties required to be known by the owner of the Thing. Dynamic meta information must be avoided at this point.
@@ -678,11 +690,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='2'>
       <register xmlns='urn:xmpp:iot:discovery' selfOwned='true'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
+          <property id='SN' value="394872348732948723"/>
+          <property id='MAN' resource='http://www.ktc.se'/>
+          <property id='MODEL' value="IMC"/>
+          <property id='V' value="1.2" type="xsd:float"/>
+          <property id='KEY' value"4857402340298342"/>
       </register>
    </iq>
    
@@ -712,11 +724,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='3'>
       <register xmlns='urn:xmpp:iot:discovery' nodeId='imc1' sourceId='MeteringTopology'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
+          <property id='SN' value="394872348732948723"/>
+          <property id='MAN' resource='http://www.ktc.se'/>
+          <property id='MODEL' value="IMC"/>
+          <property id='V' value="1.2" type="xsd:float"/>
+          <property id='KEY' value"4857402340298342"/>
       </register>
    </iq>
    
@@ -747,17 +759,17 @@ Author: Peter Waher
 			</p>
 			<example caption='String to encode as a QR-code'>
 				<![CDATA[
-                IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342]]>
+                IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342]]>
 			</example>
 			<p>
 				Using UTF-8 encoding when generating the QR-code, this string returns the following QR-code:
 			</p>
 			<p>
-                <img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342'/>
+                <img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;#MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'/>
 			</p>
 			<p>
 				To generate a QR-code, Google Chart API can be used:
-                <link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;http://xmpp-iot.github.io/xmpp-common#SN:394872348732948723;http://xmpp-iot.github.io/xmpp-common#MAN:http://www.ktc.se;http://xmpp-iot.github.io/xmpp-common#MODEL:http://xmpp-iot.github.io/xmpp-common#IMC;http://xmpp-iot.github.io/xmpp-common#V:1.2;http://xmpp-iot.github.io/xmpp-common#KEY:4857402340298342</link>
+                <link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342</link>
 			</p>
 			<p>
 				<strong>Note:</strong> The hash sign (#) has been URL encoded to <strong>%23</strong> in the URL.
@@ -772,11 +784,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='4'>
       <mine xmlns='urn:xmpp:iot:discovery'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
+          <property id='SN' value="394872348732948723"/>
+          <property id='MAN' resource='http://www.ktc.se'/>
+          <property id='MODEL' value="IMC"/>
+          <property id='V' value="1.2" type="xsd:float"/>
+          <property id='KEY' value"4857402340298342"/>
       </mine>
    </iq>]]>
 			</example>
@@ -791,11 +803,11 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='4'>
       <mine xmlns='urn:xmpp:iot:discovery' public='false'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#SN'>394872348732948723</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MAN' resource='http://www.ktc.se'/>
-          <property id='http://xmpp-iot.github.io/xmpp-common#MODEL'>IMC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#V'>1.2</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'>4857402340298342</property>
+          <property id='SN' value="394872348732948723"/>
+          <property id='MAN' resource='http://www.ktc.se'/>
+          <property id='MODEL' value="IMC"/>
+          <property id='V' value="1.2" type="xsd:float"/>
+          <property id='KEY' value"4857402340298342"/>
       </mine>
    </iq>]]>
 			</example>
@@ -1044,7 +1056,7 @@ Author: Peter Waher
 			</p>
 			<p>
 				Meta information updated in this way will only overwrite tags provided in the request, and leave other tags previously reported as is. To remove a property tag,
-				it should be updated with an empty value. It is also recommended that key meta information required to claim ownership of the Thing after a factory reset is
+                it should be updated without a <strong>value</strong> attribute. It is also recommended that key meta information required to claim ownership of the Thing after a factory reset is
 				either removed, truncated or otherwise modified after it has been claimed so that third parties with physical access to a public Thing cannot hijack it by searching
 				for it, extracting its meta information from the registry, then resetting it and then claiming ownership of it.
 			</p>
@@ -1058,10 +1070,10 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'/><!-- will be removed -->
-          <property id='http://xmpp-iot.github.io/xmpp-common#CLASS'>PLC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#LON'>-71.519722</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#LAT'>-33.008055</property>
+          <property id='KEY'/><!-- will be removed -->
+          <property id='CLASS' value="PLC"/>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/>
       </update>
    </iq>]]>
 			</example>
@@ -1082,10 +1094,10 @@ Author: Peter Waher
              jid='rack@clayster.com'
              nodeId='imc1'
              sourceId='MeteringTopology'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#KEY'/><!-- will be removed -->
-          <property id='http://xmpp-iot.github.io/xmpp-common#CLASS'>PLC</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#LON'>-71.519722</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#LAT'>-33.008055</property>
+          <property id='KEY'/><!-- will be removed -->
+          <property id='CLASS' value='PLC'/>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat'>-33.008055</property>
+          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long'>-71.519722</property>
       </update>
    </iq>]]>
 			</example>
@@ -1148,15 +1160,15 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#ROOM'/>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#APT'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#BLD'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#STREET'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#STREETNR'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#AREA'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#CITY'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#REGION'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#COUNTRY'>...</property>
+          <property id='ROOM' value='...'/>
+          <property id='APT value='...'/>
+          <property id='BLD value='...'/>
+          <property id='STREET value='...'/>
+          <property id='STREETNR' value='...'/>
+          <property id='AREA' value='...'/>
+          <property id='CITY' value='...'/>
+          <property id='REGION' value='...'/>
+          <property id='COUNTRY value='...'/>
       </update>
    </iq>]]>
 			</example>
@@ -1171,15 +1183,15 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery' jid='rack@clayster.com' nodeId='imc1' sourceId='MeteringTopology'>
-          <property id='http://xmpp-iot.github.io/xmpp-common#ROOM'/>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#APT'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#BLD'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#STREET'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#STREETNR'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#AREA'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#CITY'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#REGION'>...</property>
-          <property id='http://xmpp-iot.github.io/xmpp-common#COUNTRY'>...</property>
+          <property id='ROOM' value='...'/>
+          <property id='APT value='...'/>
+          <property id='BLD value='...'/>
+          <property id='STREET value='...'/>
+          <property id='STREETNR' value='...'/>
+          <property id='AREA' value='...'/>
+          <property id='CITY' value='...'/>
+          <property id='REGION' value='...'/>
+          <property id='COUNTRY value='...'/>
       </update>
    </iq>]]>
 			</example>
@@ -1215,142 +1227,28 @@ Author: Peter Waher
 				will never return things that have not been claimed or have been removed from the registry.
 			</p>
 			<p>
-				A search is performed by providing one or more comparison operators in a search request to the registry. If more than one comparison operator is provided, the
-				search is assumed to be performed on the intersection (i.e. AND) of all operators. If the union (i.e. OR) of different conditions is desired, multiple consecutive
-				searches have to be performed.
-			</p>
-			<p>
-				The following table lists available search operators, their element names and meanings:
-			</p>
-			<table caption='Search operators'>
-				<tr>
-					<th>Element</th>
-					<th>Type</th>
-					<th>Operator</th>
-					<th>Description</th>
-				</tr>
-				<tr>
-					<td>strEq</td>
-					<td>String</td>
-					<td>tag = c</td>
-					<td>Searches for string values tags with values equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strNEq</td>
-					<td>String</td>
-					<td>tag &lt;&gt; c</td>
-					<td>Searches for string values tags with values not equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strGt</td>
-					<td>String</td>
-					<td>tag &gt; c</td>
-					<td>Searches for string values tags with values greater than a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strGtEq</td>
-					<td>String</td>
-					<td>tag &gt;= c</td>
-					<td>Searches for string values tags with values greater than or equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strLt</td>
-					<td>String</td>
-					<td>tag &lt; c</td>
-					<td>Searches for string values tags with values lesser than a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strLtEq</td>
-					<td>String</td>
-					<td>tag &lt;= c</td>
-					<td>Searches for string values tags with values lesser than or equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>strRange</td>
-					<td>String</td>
-					<td>min &lt;(=) tag &lt;(=) max</td>
-					<td>Searches for string values tags with values within a specified range of values. The endpoints can be included or excluded in the search.</td>
-				</tr>
-				<tr>
-					<td>strNRange</td>
-					<td>String</td>
-					<td>tag &lt;(=) min OR tag &gt;(=) max</td>
-					<td>Searches for string values tags with values outside of a specified range of values. The endpoints can be included or excluded in the range (and therefore correspondingly excluded or included in the search).</td>
-				</tr>
-				<tr>
-					<td>strMask</td>
-					<td>String</td>
-					<td>tag LIKE c</td>
-					<td>Searches for string values tags with values similar to a provided constant value including wildcards.</td>
-				</tr>
-				<tr>
-					<td>numEq</td>
-					<td>Numeric</td>
-					<td>tag = c</td>
-					<td>Searches for numerical values tags with values equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numNEq</td>
-					<td>Numeric</td>
-					<td>tag &lt;&gt; c</td>
-					<td>Searches for numerical values tags with values not equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numGt</td>
-					<td>Numeric</td>
-					<td>tag &gt; c</td>
-					<td>Searches for numerical values tags with values greater than a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numGtEq</td>
-					<td>Numeric</td>
-					<td>tag &gt;= c</td>
-					<td>Searches for numerical values tags with values greater than or equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numLt</td>
-					<td>Numeric</td>
-					<td>tag &lt; c</td>
-					<td>Searches for numerical values tags with values lesser than a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numLtEq</td>
-					<td>Numeric</td>
-					<td>tag &lt;= c</td>
-					<td>Searches for numerical values tags with values lesser than or equal to a provided constant value.</td>
-				</tr>
-				<tr>
-					<td>numRange</td>
-					<td>Numeric</td>
-					<td>min &lt;(=) tag &lt;(=) max</td>
-					<td>Searches for numerical values tags with values within a specified range of values. The endpoints can be included or excluded in the search.</td>
-				</tr>
-				<tr>
-					<td>numNRange</td>
-					<td>Numeric</td>
-					<td>tag &lt;(=) min OR tag &gt;(=) max</td>
-					<td>Searches for numerical values tags with values outside of a specified range of values. The endpoints can be included or excluded in the range (and therefore correspondingly excluded or included in the search).</td>
-				</tr>
-			</table>
-			<p>
-				The following example shows how a search for specific devices within a specific geographic area can be found. More precisely, it searches for a certain kind of PLC
-				produced by a certain manufacturer, but only versions 1.0 &lt;= v &lt; 2.0 and with serial numbers beginning with 39487. The PLCs must also lie within latitude 33 ad 34
-				degrees south and between longitude 70 and 72 west.
-			</p>
-			<example caption='Searching for Things'>
-				<![CDATA[
+                A search is performed by providing one or more search patterns or filters in a search request to the registry.
+            </p>
+            <p>
+                The following example shows how a search for specific devices within a specific geographic area can be found. More percisely,
+                it searches for a certain kind of PLC produced by a certain manufacturer, but only version 1.0 &lt;= v &lt; 2.0 and with serial
+                numbers beginning with 39487. The PLCs must also lie within 10 kilometres distance of a point that is defined by a coordinate with
+                latitude 51.1234 and longitude 24.123.
+            </p>
+             <example caption='Searching for Things'>
+                <![CDATA[
    <iq type='get'
        from='curious@clayster.com/client'
        to='discovery.clayster.com'
        id='9'>
       <search xmlns='urn:xmpp:iot:discovery' offset='0' maxCount='20'>
-          <strEq name='MAN' value='www.ktc.se'/>
-          <strEq name='MODEL' value='IMC'/>
-          <strMask name='SN' value='39487*' wildcard='*'/>
-          <numRange name='V' min='1' minIncluded='true' max='2' maxIncluded='false'/>
-          <numRange name='LON' min='-72' minIncluded='true' max='-70' maxIncluded='true'/>
-          <numRange name='LAT' min='-34' minIncluded='true' max='-33' maxIncluded='true'/>
-      </search>
+        <match property='MAN' value='www.ktc.se' type='xsd:string'/>
+        <match property='MODEL' value='IMC'/>
+        <map property='SN' var='?sn'/>
+        <map property='V' var'?v'/>
+        <filter expr='!regexp(?sn, \"^39487\", \"i\") && ?v < 1 && ?v > 2'/>
+        <match expr='nearby(51.1234, 24.123, 10, \"km\")'/>
+     </search>
    </iq>]]>
 			</example>
 			<p>
@@ -1362,7 +1260,124 @@ Author: Peter Waher
 				If tag names are not found corresponding to the names provided in the search, the result set will always be empty. There's a reserved tag named <strong>KEY</strong>
 				that can be used to provide information shared only between things and their owners. If a search contains an operator referencing this tag name, the result set
 				must also always be empty. Searches on <strong>KEY</strong> MUST never find things. Furthermore, search results must never return <strong>KEY</strong> tags.
-			</p>
+            </p>
+            <p>
+                Three search elements can be used in query: <strong>map</strong>, <strong>match</strong> and <strong>filter</strong>.
+                <ul>
+                    <li>
+                        The <strong>&lt;map/&gt;</strong> element can be used to map values of a <strong>property</strong> to a given varable name defined by the 
+                        <strong>var</strong> attribute. A variable name must start with a leading question mark. Variables can be re-used later
+                        by expressions.
+                    </li>
+                    <li>
+                        <strong>&lt;match/&gt;</strong> searches for candidate result objects by checking against a value or by validating an
+                        expression.
+
+                        In the first case a <strong>property</strong> value is matched against a <strong>value</strong>. A value type can
+                        be specified by using the optional <strong>type</strong> attribute.
+
+                        A candidate can be matched by an expression that is defined in the <strong>expr</strong> attribute. An expression can use
+                        the variables created using the <strong>&lt;map/&gt;</strong> element.
+                    </li>
+                    <li>
+                        You can <strong>&lt;filter/&gt;</strong> the result candites by applying multiple filter expressions. An expression is
+                        defined in the <strong>expr</strong> attribute.
+                    </li>
+                </ul>
+                The expression language consists of a set operators and functions.
+                <table>
+                    <tr>
+                        <th>Function</th>
+                        <th>Return type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>regexp(text, pattern, flags)</td>
+                        <td>boolean</td>
+                        <td>Matches a regular expression against a given text like XPath's <a href="http://www.w3.org/TR/xpath-functions/#func-matches">fn:matches</a>.</td>
+                    </tr>
+                    <tr>
+                        <td>nearby(lat, lon, radius, units)</td>
+                        <td>boolean</td>
+                        <td>Matches candidates that are contained in a given circle.</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>4 + 2</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Subtraction</td>
+                        <td>4 - 2</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication</td>
+                        <td>4 * 2</td>
+                    </tr>
+                    <tr>
+                        <td>div</td>
+                        <td>Division</td>
+                        <td>4 div 2</td>
+                    </tr>
+                    <tr>
+                        <td>=</td>
+                        <td>Equal</td>
+                        <td>value = 42</td>
+                    </tr>
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal</td>
+                        <td>value != 42</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Less than</td>
+                        <td>value &lt; 42</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>Less than or equal to</td>
+                        <td>value &lt;= 42</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Greater than</td>
+                        <td>value &gt; 42</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>Greater than or equal to</td>
+                        <td>value &gt;= 42</td>
+                    </tr>
+
+                    <tr>
+                        <td>|</td>
+                        <td>or</td>
+                        <td>price = 42 | price = 43</td>
+                    </tr>
+
+                    <tr>
+                        <td>&amp;</td>
+                        <td>and</td>
+                        <td>price = 42 &amp; price = 43</td>
+                    </tr>
+
+                    <tr>
+                        <td>mod</td>
+                        <td>Modulus (divsion remainder)</td>
+                        <td>5 mod 2</td>
+                    </tr>
+                </table>
+            </p>
 			<p>
 				The registry returns any things found in a response similar to the following:
 			</p>
@@ -1374,13 +1389,13 @@ Author: Peter Waher
        id='9'>
       <found xmlns='urn:xmpp:iot:discovery' more='false'>
           <thing owner='owner@clayster.com' jid='thing@clayster.com'>
-             <str name='SN' value='394872348732948723'/>
-             <str name='MAN' value='www.ktc.se'/>
-             <str name='MODEL' value='IMC'/>
-             <num name='V' value='1.2'/>
-             <str name='CLASS' value='PLC'/>
-             <num name='LON' value='-71.519722'/>
-             <num name='LAT' value='-33.008055'/>
+             <property id='SN' value='394872348732948723'/>
+             <property id='MAN' value='www.ktc.se'/>
+             <property id='MODEL' value='IMC'/>
+             <property id='V' value='1.2' type='xsd:float'/>
+             <property id='CLASS' value='PLC'/>
+             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
+             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
           </thing>
           ...
       </found>
@@ -1398,14 +1413,14 @@ Author: Peter Waher
        id='9'>
       <found xmlns='urn:xmpp:iot:discovery' more='false'>
           <thing owner='owner@clayster.com' jid='rack@clayster.com' nodeId='imc1' sourceId='MeteringTopology'>
-             <str name='SN' value='394872348732948723'/>
-             <str name='MAN' value='www.ktc.se'/>
-             <str name='MODEL' value='IMC'/>
-             <num name='V' value='1.2'/>
-             <str name='CLASS' value='PLC'/>
-             <num name='LON' value='-71.519722'/>
-             <num name='LAT' value='-33.008055'/>
-          </thing>
+             <property id='SN' value='394872348732948723'/>
+             <property id='MAN' value='www.ktc.se'/>
+             <property id='MODEL' value='IMC'/>
+             <property id='V' value='1.2' type='xsd:float'/>
+             <property id='CLASS' value='PLC'/>
+             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
+             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
+           </thing>
           ...
       </found>
    </iq>]]>
@@ -1663,141 +1678,27 @@ Author: Peter Waher
 				the Thing Registry must be added to the roster of the client before the client can communicate with the Thing Registry.
 			</p>
 		</section2>
-		<section2 topic='Meta Tags' anchor='tags'>
+		<section2 topic='Meta Information' anchor='tags'>
 			<p>
-				This document does not limit the number or names of tags used by Things to register meta information about themselves. However, it provides some general limits and defines
-				the meaning of a few tags that must have the meanings specified herein.
+                This document does not limit Things in the meta-information to register. However, it does provide some general guidelines that
+                can be used to define the meta-information.
+            </p>
+			<p>
+                The registry must, at the very minimum, support the meta-information that is defined in the <a href="xmpp-iot.rdfs">XMPP IoT
+                    Onthology</a> but may use a superset of that onthology. The common (and default) ontology that a registry can support is
+                <a href="xmpp-iot-common.rdfs">XMPP IoT Common Onthology</a> that adds some meta-information on Things.
 			</p>
 			<p>
-				The maximum length of a tag name is <strong>32</strong> characters. Tag names must not include colon (:), hash sign (#) or white space characters. String tag values
-				must not exceed 128 characters in length.
+                A registry owner can decide to create its own ontology based upon the <strong>XMPP IoT Onthology</strong>. It can base its 
+                ontology on information from for example:
+                <ul>
+                    <li>The geo names ontology: <a href="http://www.geonames.org/ontology">http://www.geonames.org/ontology</a></li>
+                    <li>The Good Relations ontology: <a href="http://purl.org/goodrelations/v1">http://purl.org/goodrelations/v1</a></li>
+                    <li>...</li>
+                </ul>
 			</p>
 			<p>
-				The following table lists predefined tag names and their corresponding meanings.
-			</p>
-			<table caption='Predefined tags'>
-				<tr>
-					<th>Tag Name</th>
-					<th>Type</th>
-					<th>Description</th>
-				</tr>
-				<tr>
-					<td>ALT</td>
-					<td>Numeric</td>
-					<td>Altitude (meters)</td>
-				</tr>
-				<tr>
-					<td>APT</td>
-					<td>String</td>
-					<td>Apartment associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>AREA</td>
-					<td>String</td>
-					<td>Area associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>BLD</td>
-					<td>String</td>
-					<td>Building associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>CITY</td>
-					<td>String</td>
-					<td>City associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>CLASS</td>
-					<td>String</td>
-					<td>Class of Thing</td>
-				</tr>
-				<tr>
-					<td>COUNTRY</td>
-					<td>String</td>
-					<td>Country associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>KEY</td>
-					<td>String</td>
-					<td>Key, shared between thing and owner.</td>
-				</tr>
-				<tr>
-					<td>LAT</td>
-					<td>Numeric</td>
-					<td>Latitude (degrees)</td>
-				</tr>
-				<tr>
-					<td>LON</td>
-					<td>Numeric</td>
-					<td>Longitude (degrees)</td>
-				</tr>
-				<tr>
-					<td>MAN</td>
-					<td>String</td>
-					<td>Domain name owned by the Manufacturer</td>
-				</tr>
-				<tr>
-					<td>MLOC</td>
-					<td>String</td>
-					<td>Meter Location ID</td>
-				</tr>
-				<tr>
-					<td>MNR</td>
-					<td>String</td>
-					<td>Meter Number</td>
-				</tr>
-				<tr>
-					<td>MODEL</td>
-					<td>String</td>
-					<td>Name of Model</td>
-				</tr>
-				<tr>
-					<td>NAME</td>
-					<td>String</td>
-					<td>Name associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>PURL</td>
-					<td>String</td>
-					<td>URL to product information for the Thing.</td>
-				</tr>
-				<tr>
-					<td>REGION</td>
-					<td>String</td>
-					<td>Region associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>ROOM</td>
-					<td>String</td>
-					<td>Room associated with the Thing</td>
-				</tr>
-				<tr>
-					<td>SN</td>
-					<td>String</td>
-					<td>Serial Number</td>
-				</tr>
-				<tr>
-					<td>STREET</td>
-					<td>String</td>
-					<td>Street Name</td>
-				</tr>
-				<tr>
-					<td>STREETNR</td>
-					<td>String</td>
-					<td>Street Number</td>
-				</tr>
-				<tr>
-					<td>V</td>
-					<td>Numeric</td>
-					<td>Version Number</td>
-				</tr>
-			</table>
-			<p>
-				It is up to the Thing Registry to choose which tags it persists and which tags it doesn't. To avoid the possibility of malicious reporting of tags, some limit should be
-				imposed on what tags are supported. As a minimum, a Thing Registry must support all predefined tags, as listed above.
-			</p>
-			<p>
-				<strong>Note:</strong> Meta Tag names are case insensitive. In this document, all tag names have been written using upper case letters.
+                It is up to the Thing Registry to choose which ontologies it supports. To avoid the possibility of malicious reporting of tags, some limit should be imposed on what information must be supported. As a minimum, a Thing Registry must support all meta-information from <strong>XMPP IoT Common ontology</strong>.
 			</p>
 		</section2>
 		<section2 topic='Friendships between Things and Registry' anchor='friendships'>
@@ -1947,29 +1848,14 @@ Author: Peter Waher
     <xs:element name='search'>
         <xs:complexType>
             <xs:choice minOccurs='1' maxOccurs='unbounded'>
-                <xs:element name='strEq' type='StrTag'/>
-                <xs:element name='strNEq' type='StrTag'/>
-                <xs:element name='strGt' type='StrTag'/>
-                <xs:element name='strGtEq' type='StrTag'/>
-                <xs:element name='strLt' type='StrTag'/>
-                <xs:element name='strLtEq' type='StrTag'/>
-                <xs:element name='strRange' type='StrRange'/>
-                <xs:element name='strNRange' type='StrRange'/>
-                <xs:element name='strMask'>
-                    <xs:complexType>
-                        <xs:attribute name='name' type='xs:string' use='required'/>
-                        <xs:attribute name='value' type='xs:string' use='required'/>
-                        <xs:attribute name='wildcard' type='xs:string' use='required'/>
-                    </xs:complexType>
+                <xs:element name='match' type='MatchTag'/>
+                <xs:element name='map'>
+                    <xs:attribute name='property' type='xs:string' use='required'/>
+                    <xs:attribute name='var' type='xs:string' use='required'/>
                 </xs:element>
-                <xs:element name='numEq' type='NumTag'/>
-                <xs:element name='numNEq' type='NumTag'/>
-                <xs:element name='numGt' type='NumTag'/>
-                <xs:element name='numGtEq' type='NumTag'/>
-                <xs:element name='numLt' type='NumTag'/>
-                <xs:element name='numLtEq' type='NumTag'/>
-                <xs:element name='numRange' type='NumRange'/>
-                <xs:element name='numNRange' type='NumRange'/>
+                <xs:element name='filter'>
+                    <xs:attribute name='expr' type='xs:string' use='required'/>
+                </xs:element>
             </xs:choice>
             <xs:attribute name='offset' type='xs:nonNegativeInteger' use='optional' default='0'/>
             <xs:attribute name='maxCount' type='xs:positiveInteger' use='optional'/>
@@ -1981,10 +1867,7 @@ Author: Peter Waher
             <xs:sequence minOccurs='0' maxOccurs='unbounded'>
                 <xs:element name='thing'>
                     <xs:complexType>
-                        <xs:choice minOccurs='0' maxOccurs='unbounded'>
-                            <xs:element name='str' type='StrTag'/>
-                            <xs:element name='num' type='NumTag'/>
-                        </xs:choice>
+                        <xs:element name='str' type='PropertyTag' minOccurs='0' maxOccurs='unbounded'/>
                         <xs:attribute name='owner' type='xs:string' use='required'/>
                         <xs:attribute name='jid' type='xs:string' use='required'/>
                         <xs:attributeGroup ref='nodeInfo'/>
@@ -1994,20 +1877,17 @@ Author: Peter Waher
             <xs:attribute name='more' type='xs:boolean' use='optional' default='false'/>
         </xs:complexType>
     </xs:element>
- 
+
     <xs:attributeGroup name='nodeInfo'>
         <xs:attribute name='nodeId' type='xs:string' use='optional'/>
         <xs:attribute name='sourceId' type='xs:string' use='optional'/>
         <xs:attribute name='cacheType' type='xs:string' use='optional'/>
     </xs:attributeGroup>
-     
+
     <xs:complexType name='MetaData'>
-        <xs:choice minOccurs='0' maxOccurs='unbounded'>
-            <xs:element name='str' type='StrTag'/>
-            <xs:element name='num' type='NumTag'/>
-        </xs:choice>
+        <xs:element name='property' type='PropertyTag' minOccurs='0'/>
     </xs:complexType>
- 
+
     <xs:complexType name='MetaDataNodeInfo'>
         <xs:complexContent>
             <xs:extension base='MetaData'>
@@ -2015,7 +1895,7 @@ Author: Peter Waher
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
- 
+
     <xs:complexType name='Register'>
         <xs:complexContent>
             <xs:extension base='MetaDataNodeInfo'>
@@ -2057,32 +1937,34 @@ Author: Peter Waher
         <xs:attributeGroup ref='nodeInfo'/>
     </xs:complexType>
  
-    <xs:complexType name='StrTag'>
-        <xs:attribute name='name' type='xs:string' use='required'/>
-        <xs:attribute name='value' type='xs:string' use='required'/>
+    <xs:complexType name='PropertyTag'>
+        <xs:attribute name='id' type='xs:string' use='required'/>
+        <xs:choice minOccurs='1' maxOccurs='1'>
+            <xs:complexContent>
+               <xs:attribute name='value' type='xs:string'/>
+               <xs:attribute name='type' type='xs:string' use='optional' default='xs:string'/>
+            </xs:complexContent>
+            <xs:attribute name='resource' type='xs:string'/>
+        </xs:choice>
+        <xs:attribute name='type' type='xs:string' use='optional' default='xs:string'/>
     </xs:complexType>
- 
-    <xs:complexType name='NumTag'>
-        <xs:attribute name='name' type='xs:string' use='required'/>
-        <xs:attribute name='value' type='xs:double' use='required'/>
+
+    <xs:complexType name='MatchTag'>
+        <xs:choice minOccurs='1' maxOccurs='1'>
+            <xs:attribute name='expr' type='xs:string'/>
+            <xs:complexContent>
+                <xs:attribute name='property' type='xs:string'/>
+                <xs:choice minOccurs='1' maxOccurs='1'>
+                    <xs:complexContent>
+                        <xs:attribute name='value' type='xs:string'/>
+                        <xs:attribute name='type' type='xs:string' use='optional' default='xs:string'/>
+                    </xs:complexContent>
+                    <xs:attribute name='resource' type='xs:string'/>
+                </xs:choice>
+            </xs:complexContent>
+        </xs:choice>
     </xs:complexType>
- 
-    <xs:complexType name='StrRange'>
-        <xs:attribute name='name' type='xs:string' use='required'/>
-        <xs:attribute name='min' type='xs:string' use='required'/>
-        <xs:attribute name='minIncluded' type='xs:boolean' use='optional' default='true'/>
-        <xs:attribute name='max' type='xs:string' use='required'/>
-        <xs:attribute name='maxIncluded' type='xs:boolean' use='optional' default='true'/>
-    </xs:complexType>
- 
-    <xs:complexType name='NumRange'>
-        <xs:attribute name='name' type='xs:string' use='required'/>
-        <xs:attribute name='min' type='xs:double' use='required'/>
-        <xs:attribute name='minIncluded' type='xs:boolean' use='optional' default='true'/>
-        <xs:attribute name='max' type='xs:double' use='required'/>
-        <xs:attribute name='maxIncluded' type='xs:boolean' use='optional' default='true'/>
-    </xs:complexType>
- 
+
 </xs:schema>]]>
 		</code>
 	</section1>

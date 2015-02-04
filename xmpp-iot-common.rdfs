@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rdfs-xhtml.xsl"?>
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xmpp="http://xmpp-iot.github.io/xmpp-iot#">
+
+    <rdf:Description rdf:about="http://xmpp-iot.github.io/xmpp-iot.rdfs">
+        <dc:title>XMPP-IoT-Common: an RDF vocabulary</dc:title>
+
+         <dc:description>A vocabulary for representing things in XMPP in a most common way.
+             See http://xmpp-iot.github.io for more details.
+         </dc:description>
+
+         <dc:date></dc:date>
+
+         <rdfs:label>xmpp-iot-common</rdfs:label>
+
+         <rdfs:comment>
+             Release 0 - inital release
+         </rdfs:comment>
+
+    </rdf:Description>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#APT">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>APT</rdfs:label>
+        <rdfs:comment>Apartement associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>lat</rdfs:label>
+        <rdfs:comment>Latitude of the location associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>long</rdfs:label>
+        <rdfs:comment>Longitude of the location associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#alt">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>alt</rdfs:label>
+        <rdfs:comment>Altitude of the location associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#AREA">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>AREA</rdfs:label>
+        <rdfs:comment>Area associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#BLD">
+        <rdfs:label>BLD</rdfs:label>
+        <rdfs:comment>Building associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#CITY">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>CITY</rdfs:label>
+        <rdfs:comment>City associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#CLASS">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>CLASS</rdfs:label>
+        <rdfs:comment>Class of Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#COUNTRY">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>COUNTRY</rdfs:label>
+        <rdfs:comment>Country associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#MAN">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>MAN</rdfs:label>
+        <rdfs:comment>Domain name of the Manufacturer of the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#MLOC">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>MLOC</rdfs:label>
+        <rdfs:comment>Meter location ID.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#MNR">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>MNR</rdfs:label>
+        <rdfs:comment>Meter Number</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#MODEL">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>MODEL</rdfs:label>
+        <rdfs:comment>Name of Model</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#NAME">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>NAME</rdfs:label>
+        <rdfs:comment>Name associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#PURL">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>PURL</rdfs:label>
+        <rdfs:comment>URL to product information for the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#REGION">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>REGION</rdfs:label>
+        <rdfs:comment>Region associated with the Thing.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#SN">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>SN</rdfs:label>
+        <rdfs:comment>Serial Number.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#STREET">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>STREET</rdfs:label>
+        <rdfs:comment>Street name.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#STREETNR">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>STREETNR</rdfs:label>
+        <rdfs:comment>Street number.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#V">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>V</rdfs:label>
+        <rdfs:comment>Version number.</rdfs:comment>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#ROOM">
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
+        <rdfs:label>ROOM</rdfs:label>
+        <rdfs:comment>Room number.</rdfs:comment>
+    </rdf:Property>
+
+</rdf:RDF>
+
