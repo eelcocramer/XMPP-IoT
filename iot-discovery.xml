@@ -1246,8 +1246,8 @@ Author: Peter Waher
         <match property='MODEL' value='IMC'/>
         <map property='SN' var='?sn'/>
         <map property='V' var'?v'/>
-        <filter expr='!regexp(?sn, \"^39487\", \"i\") && ?v < 1 && ?v > 2'/>
-        <match expr='nearby(51.1234, 24.123, 10, \"km\")'/>
+        <filter expr='!regexp(?sn, "^39487", "i") && ?v < 1 && ?v > 2'/>
+        <match expr='nearby(51.1234, 24.123, 10, "km")'/>
      </search>
    </iq>]]>
 			</example>
