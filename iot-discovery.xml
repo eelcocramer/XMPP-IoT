@@ -630,14 +630,14 @@ Author: Peter Waher
        from='thing@clayster.com/imc'
        to='discovery.clayster.com'
        id='1'>
-       <register xmlns='urn:xmpp:iot:discovery'>
-          <property id='SN' value="394872348732948723"/>
-          <property id='MAN' resource='http://www.ktc.se'/>
-          <property id='MODEL' value="IMC"/>
-          <property id='V' value="1.2" type="xsd:float"/>
-          <property id='KEY' value"4857402340298342"/>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='55.701'/>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='12.552'/>
+      <register xmlns='urn:xmpp:iot:discovery' defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='SN' value="394872348732948723"/>
+         <property id='MAN' resource='http://www.ktc.se'/>
+         <property id='MODEL' value="IMC"/>
+         <property id='V' value="1.2" type="xsd:float"/>
+         <property id='KEY' value"4857402340298342"/>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='55.701'/>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='12.552'/>
       </register>
    </iq>
    
@@ -647,7 +647,10 @@ Author: Peter Waher
        id='1'/>]]>
 			</example>
 			<p>
-                The register messages is contains a set of property tags. The properties describe the Thing that is registered in the form of triples ([Thing] &lt;relation&gt; [value]). The property's <strong>id</strong> attribute describes the relation with with Thing (i.e. has serial number or has model). The default namespace for the <strong>id</strong> attribute is <strong>http://xmpp-iot.github.io/xmpp-iot-common</strong>. A property can either have a <strong>value</strong> attribute contains the value or a <strong>resource</strong> attribute that refers to an object defined elsewhere. The type of the <strong>value</strong> attribute can be specified by adding an <strong>type</strong> attribute that specifies how the value should be intreted. It must use a data type from the xsd namespace (<link url="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</link>). If omited type is determined by the registry.
+                The register messages is contains a set of property tags. The properties describe the Thing that is registered in the form of triples ([Thing] &lt;relation&gt; [value]). The property's <strong>id</strong> attribute describes the relation with with Thing (i.e. has serial number or has model), it can hold a fully qualified URI that describes the property or use an item from the default namespace. The default namespace for the <strong>id</strong> attribute can be specified by the <strong>defaultns</strong> attribute on the <strong>register</strong> parent element. A list of supported ontologies can be discovered as described in <link url='#support'>Determining Support</link>.
+            </p>
+            <p>
+                A property can either have a <strong>value</strong> attribute contains the value or a <strong>resource</strong> attribute that refers to an object defined elsewhere. The type of the <strong>value</strong> attribute can be specified by adding an <strong>type</strong> attribute that specifies how the value should be intreted. It must use a data type from the xsd namespace (<link url="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</link>). If omited type is determined by the registry.
             </p>
 			<p>
 				The Thing should only register properties required to be known by the owner of the Thing. Dynamic meta information must be avoided at this point.
@@ -689,12 +692,14 @@ Author: Peter Waher
        from='thing@clayster.com/imc'
        to='discovery.clayster.com'
        id='2'>
-      <register xmlns='urn:xmpp:iot:discovery' selfOwned='true'>
-          <property id='SN' value="394872348732948723"/>
-          <property id='MAN' resource='http://www.ktc.se'/>
-          <property id='MODEL' value="IMC"/>
-          <property id='V' value="1.2" type="xsd:float"/>
-          <property id='KEY' value"4857402340298342"/>
+      <register xmlns='urn:xmpp:iot:discovery'
+                selfOwned='true'
+                defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='SN' value="394872348732948723"/>
+         <property id='MAN' resource='http://www.ktc.se'/>
+         <property id='MODEL' value="IMC"/>
+         <property id='V' value="1.2" type="xsd:float"/>
+         <property id='KEY' value"4857402340298342"/>
       </register>
    </iq>
    
@@ -723,12 +728,14 @@ Author: Peter Waher
        from='rack@clayster.com/plcs'
        to='discovery.clayster.com'
        id='3'>
-      <register xmlns='urn:xmpp:iot:discovery' nodeId='imc1' sourceId='MeteringTopology'>
-          <property id='SN' value="394872348732948723"/>
-          <property id='MAN' resource='http://www.ktc.se'/>
-          <property id='MODEL' value="IMC"/>
-          <property id='V' value="1.2" type="xsd:float"/>
-          <property id='KEY' value"4857402340298342"/>
+      <register xmlns='urn:xmpp:iot:discovery'
+          nodeId='imc1' sourceId='MeteringTopology'
+          defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='SN' value="394872348732948723"/>
+         <property id='MAN' resource='http://www.ktc.se'/>
+         <property id='MODEL' value="IMC"/>
+         <property id='V' value="1.2" type="xsd:float"/>
+         <property id='KEY' value"4857402340298342"/>
       </register>
    </iq>
    
@@ -759,17 +766,17 @@ Author: Peter Waher
 			</p>
 			<example caption='String to encode as a QR-code'>
 				<![CDATA[
-                IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342]]>
+                IoTDisco;defaultns:http://xmpp-iot.github.io/xmpp-iot-common#;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342]]>
 			</example>
 			<p>
 				Using UTF-8 encoding when generating the QR-code, this string returns the following QR-code:
 			</p>
 			<p>
-                <img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;#MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'/>
+                <img src='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;defaultns:http://xmpp-iot.github.io/xmpp-iot-common#;SN:394872348732948723;#MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'/>
 			</p>
 			<p>
 				To generate a QR-code, Google Chart API can be used:
-                <link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342</link>
+                <link url='https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;defaultns:http://xmpp-iot.github.io/xmpp-iot-common#;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342'>https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&amp;chl=IoTDisco;defaultns:http://xmpp-iot.github.io/xmpp-iot-common#;SN:394872348732948723;MAN:http://www.ktc.se;MODEL:IMC;V:1.2;KEY:4857402340298342</link>
 			</p>
 			<p>
 				<strong>Note:</strong> The hash sign (#) has been URL encoded to <strong>%23</strong> in the URL.
@@ -783,12 +790,13 @@ Author: Peter Waher
        from='owner@clayster.com/phone'
        to='discovery.clayster.com'
        id='4'>
-      <mine xmlns='urn:xmpp:iot:discovery'>
-          <property id='SN' value="394872348732948723"/>
-          <property id='MAN' resource='http://www.ktc.se'/>
-          <property id='MODEL' value="IMC"/>
-          <property id='V' value="1.2" type="xsd:float"/>
-          <property id='KEY' value"4857402340298342"/>
+      <mine xmlns='urn:xmpp:iot:discovery'
+            defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='SN' value="394872348732948723"/>
+         <property id='MAN' resource='http://www.ktc.se'/>
+         <property id='MODEL' value="IMC"/>
+         <property id='V' value="1.2" type="xsd:float"/>
+         <property id='KEY' value"4857402340298342"/>
       </mine>
    </iq>]]>
 			</example>
@@ -802,12 +810,14 @@ Author: Peter Waher
        from='owner@clayster.com/phone'
        to='discovery.clayster.com'
        id='4'>
-      <mine xmlns='urn:xmpp:iot:discovery' public='false'>
-          <property id='SN' value="394872348732948723"/>
-          <property id='MAN' resource='http://www.ktc.se'/>
-          <property id='MODEL' value="IMC"/>
-          <property id='V' value="1.2" type="xsd:float"/>
-          <property id='KEY' value"4857402340298342"/>
+      <mine xmlns='urn:xmpp:iot:discovery'
+            public='false'
+            defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>>
+         <property id='SN' value="394872348732948723"/>
+         <property id='MAN' resource='http://www.ktc.se'/>
+         <property id='MODEL' value="IMC"/>
+         <property id='V' value="1.2" type="xsd:float"/>
+         <property id='KEY' value"4857402340298342"/>
       </mine>
    </iq>]]>
 			</example>
@@ -1069,11 +1079,13 @@ Author: Peter Waher
        from='thing@clayster.com/imc'
        to='discovery.clayster.com'
        id='8'>
-      <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <property id='KEY' value=''/><!-- will be removed -->
-          <property id='CLASS' value='PLC'/>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/>
+      <update xmlns='urn:xmpp:iot:discovery'
+              jid='thing@clayster.com'
+              defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='KEY' value=''/><!-- will be removed -->
+         <property id='CLASS' value='PLC'/>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/>
       </update>
    </iq>]]>
 			</example>
@@ -1091,13 +1103,14 @@ Author: Peter Waher
        to='discovery.clayster.com'
        id='8'>
       <update xmlns='urn:xmpp:iot:discovery'
-             jid='rack@clayster.com'
-             nodeId='imc1'
-             sourceId='MeteringTopology'>
-          <property id='KEY' value=''/><!-- will be removed -->
-          <property id='CLASS' value='PLC'/>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat'>-33.008055</property>
-          <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long'>-71.519722</property>
+              jid='rack@clayster.com'
+              nodeId='imc1'
+              sourceId='MeteringTopology'
+              defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='KEY' value=''/><!-- will be removed -->
+         <property id='CLASS' value='PLC'/>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat'>-33.008055</property>
+         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long'>-71.519722</property>
       </update>
    </iq>]]>
 			</example>
@@ -1159,16 +1172,18 @@ Author: Peter Waher
        from='owner@clayster.com/1234'
        to='discovery.clayster.com'
        id='8'>
-      <update xmlns='urn:xmpp:iot:discovery' jid='thing@clayster.com'>
-          <property id='ROOM' value='...'/>
-          <property id='APT value='...'/>
-          <property id='BLD value='...'/>
-          <property id='STREET value='...'/>
-          <property id='STREETNR' value='...'/>
-          <property id='AREA' value='...'/>
-          <property id='CITY' value='...'/>
-          <property id='REGION' value='...'/>
-          <property id='COUNTRY value='...'/>
+      <update xmlns='urn:xmpp:iot:discovery'
+              jid='thing@clayster.com'
+              defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='ROOM' value='...'/>
+         <property id='APT value='...'/>
+         <property id='BLD value='...'/>
+         <property id='STREET value='...'/>
+         <property id='STREETNR' value='...'/>
+         <property id='AREA' value='...'/>
+         <property id='CITY' value='...'/>
+         <property id='REGION' value='...'/>
+         <property id='COUNTRY value='...'/>
       </update>
    </iq>]]>
 			</example>
@@ -1182,16 +1197,20 @@ Author: Peter Waher
        from='owner@clayster.com/1234'
        to='discovery.clayster.com'
        id='8'>
-      <update xmlns='urn:xmpp:iot:discovery' jid='rack@clayster.com' nodeId='imc1' sourceId='MeteringTopology'>
-          <property id='ROOM' value='...'/>
-          <property id='APT value='...'/>
-          <property id='BLD value='...'/>
-          <property id='STREET value='...'/>
-          <property id='STREETNR' value='...'/>
-          <property id='AREA' value='...'/>
-          <property id='CITY' value='...'/>
-          <property id='REGION' value='...'/>
-          <property id='COUNTRY value='...'/>
+      <update xmlns='urn:xmpp:iot:discovery'
+              jid='rack@clayster.com'
+              nodeId='imc1'
+              sourceId='MeteringTopology'
+              defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <property id='ROOM' value='...'/>
+         <property id='APT value='...'/>
+         <property id='BLD value='...'/>
+         <property id='STREET value='...'/>
+         <property id='STREETNR' value='...'/>
+         <property id='AREA' value='...'/>
+         <property id='CITY' value='...'/>
+         <property id='REGION' value='...'/>
+         <property id='COUNTRY value='...'/>
       </update>
    </iq>]]>
 			</example>
@@ -1241,13 +1260,16 @@ Author: Peter Waher
        from='curious@clayster.com/client'
        to='discovery.clayster.com'
        id='9'>
-      <search xmlns='urn:xmpp:iot:discovery' offset='0' maxCount='20'>
-        <match property='MAN' value='www.ktc.se' type='xsd:string'/>
-        <match property='MODEL' value='IMC'/>
-        <map property='SN' var='?sn'/>
-        <map property='V' var'?v'/>
-        <filter expr='!regexp(?sn, "^39487", "i") & ?v < 1 & ?v > 2'/>
-        <match expr='nearby(51.1234, 24.123, 10, "km")'/>
+      <search xmlns='urn:xmpp:iot:discovery'
+              offset='0'
+              maxCount='20'
+              defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
+         <match property='MAN' value='www.ktc.se' type='xsd:string'/>
+         <match property='MODEL' value='IMC'/>
+         <map property='SN' var='?sn'/>
+         <map property='V' var'?v'/>
+         <filter expr='!regexp(?sn, "^39487", "i") & ?v < 1 & ?v > 2'/>
+         <match expr='nearby(51.1234, 24.123, 10, "km")'/>
      </search>
    </iq>]]>
 			</example>
@@ -1390,7 +1412,9 @@ Author: Peter Waher
        to='curious@clayster.com/client'
        id='9'>
       <found xmlns='urn:xmpp:iot:discovery' more='false'>
-          <thing owner='owner@clayster.com' jid='thing@clayster.com'>
+         <thing owner='owner@clayster.com'
+                jid='thing@clayster.com'
+                defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
              <property id='SN' value='394872348732948723'/>
              <property id='MAN' value='www.ktc.se'/>
              <property id='MODEL' value='IMC'/>
@@ -1398,8 +1422,8 @@ Author: Peter Waher
              <property id='CLASS' value='PLC'/>
              <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
              <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
-          </thing>
-          ...
+         </thing>
+         ...
       </found>
    </iq>]]>
 			</example>
@@ -1414,7 +1438,11 @@ Author: Peter Waher
        to='curious@clayster.com/client'
        id='9'>
       <found xmlns='urn:xmpp:iot:discovery' more='false'>
-          <thing owner='owner@clayster.com' jid='rack@clayster.com' nodeId='imc1' sourceId='MeteringTopology'>
+         <thing owner='owner@clayster.com'
+                jid='rack@clayster.com'
+                nodeId='imc1'
+                sourceId='MeteringTopology'
+                defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
              <property id='SN' value='394872348732948723'/>
              <property id='MAN' value='www.ktc.se'/>
              <property id='MODEL' value='IMC'/>
@@ -1422,8 +1450,8 @@ Author: Peter Waher
              <property id='CLASS' value='PLC'/>
              <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
              <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
-           </thing>
-          ...
+          </thing>
+         ...
       </found>
    </iq>]]>
 			</example>
