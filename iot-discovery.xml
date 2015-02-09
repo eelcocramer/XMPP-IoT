@@ -1601,8 +1601,19 @@ Author: Peter Waher
        to='device@clayster.com/device'
        id='13'>
      <query xmlns='http://jabber.org/protocol/disco#info'>
-        ...
+         ...
+        <identity category='directory' type='iot' name='IoT registry'/>
         <feature var='urn:xmpp:iot:discovery'/>
+        <x xmlns='jabber:x:data' type='result'>
+           <field var='FORM_TYPE' type='hidden'>
+              <value>urn:xmpp:iot:discovery:info<value>
+           </field>
+           <field var='ontologies'>
+              <value>https://servicelab.github.io/xmpp-iot</value>
+              <value>http://xmpp-iot.github.io/xmpp-iot-common</value>
+              ... <!-- other supported ontologies -->
+           </field>
+        </x>
         ...
      </query>
    </iq>]]>
@@ -1665,7 +1676,18 @@ Author: Peter Waher
        id='16'>
       <query xmlns='http://jabber.org/protocol/disco#info'>
          ...
+         <identity category='directory' type='iot' name='IoT registry'/>
          <feature var='urn:xmpp:iot:discovery'/>
+         <x xmlns='jabber:x:data' type='result'>
+            <field var='FORM_TYPE' type='hidden'>
+               <value>urn:xmpp:iot:discovery:info<value>
+            </field>
+            <field var='ontologies'>
+               <value>https://servicelab.github.io/xmpp-iot</value>
+               <value>http://xmpp-iot.github.io/xmpp-iot-common</value>
+               ... <!-- other supported ontologies -->
+            </field>
+         </x>
          ...
       </query>
    </iq>]]>
