@@ -30,21 +30,24 @@
         <rdfs:comment>Apartement associated with the Thing.</rdfs:comment>
     </rdf:Property>
 
-    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#LAT">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
         <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
-        <rdfs:label>lat</rdfs:label>
+        <rdfs:label>LAT</rdfs:label>
         <rdfs:comment>Latitude of the location associated with the Thing.</rdfs:comment>
     </rdf:Property>
 
-    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#LONG">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
         <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
-        <rdfs:label>long</rdfs:label>
+        <rdfs:label>LONG</rdfs:label>
         <rdfs:comment>Longitude of the location associated with the Thing.</rdfs:comment>
     </rdf:Property>
 
-    <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#alt">
-        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing" />
-        <rdfs:label>alt</rdfs:label>
+    <rdf:Property rdf:about="http://xmpp-iot.github.io/xmpp-iot-common.rdfs#ALT">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#alt"/>
+        <rdfs:domain rdf:resource="http://xmpp-iot.github.io/xmpp-iot#Thing"/>
+        <rdfs:label>ALT</rdfs:label>
         <rdfs:comment>Altitude of the location associated with the Thing.</rdfs:comment>
     </rdf:Property>
 

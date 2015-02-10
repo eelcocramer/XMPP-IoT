@@ -636,8 +636,8 @@ Author: Peter Waher
          <property id='MODEL' value="IMC"/>
          <property id='V' value="1.2" type="xsd:float"/>
          <property id='KEY' value"4857402340298342"/>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='55.701'/>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='12.552'/>
+         <property id='LAT' value='55.701'/>
+         <property id='LONG' value='12.552'/>
       </register>
    </iq>
    
@@ -1084,8 +1084,8 @@ Author: Peter Waher
               defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
          <property id='KEY' value=''/><!-- will be removed -->
          <property id='CLASS' value='PLC'/>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/>
+         <property id='LAT' value='-33.008055'/>
+         <property id='LONG' value='-71.519722'/>
       </update>
    </iq>]]>
 			</example>
@@ -1109,8 +1109,8 @@ Author: Peter Waher
               defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
          <property id='KEY' value=''/><!-- will be removed -->
          <property id='CLASS' value='PLC'/>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat'>-33.008055</property>
-         <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long'>-71.519722</property>
+         <property id='LAT'>-33.008055</property>
+         <property id='LONG'>-71.519722</property>
       </update>
    </iq>]]>
 			</example>
@@ -1420,8 +1420,8 @@ Author: Peter Waher
              <property id='MODEL' value='IMC'/>
              <property id='V' value='1.2' type='xsd:float'/>
              <property id='CLASS' value='PLC'/>
-             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
-             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
+             <property id='LAT' value='51.1234'/>
+             <property id='LONG' value='24.123'/>
          </thing>
          ...
       </found>
@@ -1448,8 +1448,8 @@ Author: Peter Waher
              <property id='MODEL' value='IMC'/>
              <property id='V' value='1.2' type='xsd:float'/>
              <property id='CLASS' value='PLC'/>
-             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/>
-             <property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/>
+             <property id='LAT' value='51.1234'/>
+             <property id='LONG' value='24.123'/>
           </thing>
          ...
       </found>

@@ -112,11 +112,11 @@
 			</tr>
 			<tr class="body">
 				<td colspan="" rowspan="">XEP-0331</td>
-				<td colspan="" rowspan="">Defines extensions for how color parameters can be handled, based on <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms</a></span>  [<a href="#nt-idm418385961216">1</a>]</td>
+				<td colspan="" rowspan="">Defines extensions for how color parameters can be handled, based on <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms</a></span>  [<a href="#nt-idm379240481808">1</a>]</td>
 			</tr>
 			<tr class="body">
 				<td colspan="" rowspan="">XEP-0336</td>
-				<td colspan="" rowspan="">Defines extensions for how dynamic forms can be created, based on <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms</a></span>  [<a href="#nt-idm418385963344">2</a>], <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0122.html">Data Forms Validation</a></span>  [<a href="#nt-idm418385952672">3</a>], <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0137.html">Publishing Stream Initiation Requests</a></span>  [<a href="#nt-idm418385947936">4</a>] and <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0141.html">Data Forms Layout</a></span>  [<a href="#nt-idm418385943232">5</a>].</td>
+				<td colspan="" rowspan="">Defines extensions for how dynamic forms can be created, based on <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms</a></span>  [<a href="#nt-idm379240483936">2</a>], <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0122.html">Data Forms Validation</a></span>  [<a href="#nt-idm379240473216">3</a>], <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0137.html">Publishing Stream Initiation Requests</a></span>  [<a href="#nt-idm379240468480">4</a>] and <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0141.html">Data Forms Layout</a></span>  [<a href="#nt-idm379240463776">5</a>].</td>
 			</tr>
 			<tr class="body">
 				<td colspan="" rowspan="">XEP-0347</td>
@@ -342,7 +342,7 @@
 					This includes configuration parameters and other control elements, which are transmitted in special marked data elements, called 'options', as described in
 					<span class="ref" style="">
 						<a href="http://tools.ietf.org/html/rfc3942">RFC 3942</a>
-					</span>  [<a href="#nt-idm418385875232">6</a>].
+					</span>  [<a href="#nt-idm379240395776">6</a>].
 				</p>
 				<p class="" style="">
 					<a href="http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.txt">Dynamic Host Configuration Protocol (DHCP) and Bootstrap Protocol (BOOTP) Parameters</a> lists currently assigned 'options' by IANA.
@@ -362,7 +362,7 @@
 					<p class="" style="">
 						This option specifies the name of the XMPP server.
 						The name may or may not be qualified with the local domain name.
-						See <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc1035">RFC 1035</a></span>  [<a href="#nt-idm418385861920">7</a>] for character set restrictions.
+						See <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc1035">RFC 1035</a></span>  [<a href="#nt-idm379240382464">7</a>] for character set restrictions.
 					</p>
 					<p class="" style="">
 						The code for this option is 224 (for 'site-specific option range') or 84 (for <a href="#option">DHCP and BOOTP Parameters for IoT Discovery</a>), and its minimum length is 1.
@@ -391,11 +391,11 @@
 			</div>
 			<div class="indent"><h3>3.3.2 <a name="dns" id="dns">Multicast DNS (mDNS) and DNS Service Discovery (DNS-SD)</a></h3>
 				<p class="" style="">
-					An introduction of mDNS/DNS-SD (e.g., how it works and terminology) is described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm418385848144">8</a>] (i.e., sections [1.2] and [2]).
+					An introduction of mDNS/DNS-SD (e.g., how it works and terminology) is described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm379240368688">8</a>] (i.e., sections [1.2] and [2]).
 					For the purpose of IoT Discovery we are interested only in the "xmpp-client" service.
 					An XMPP server MUST publish four different kinds of DNS records to advertise its availability using the services of type "xmpp-client".
 					An XMPP chat client (actually its mDNS daemon) can send out multicast DNS queries for services of type "xmpp-client".
-					<span class="strong">Note:</span> the service of type "xmpp-client" is the reservered name for client-to-server connections by IANA, as described in <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idm418385842480">9</a>].
+					<span class="strong">Note:</span> the service of type "xmpp-client" is the reservered name for client-to-server connections by IANA, as described in <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idm379240363024">9</a>].
 				</p>
 				<div class="indent"><h3>3.3.2.1 <a name="dnsrecords" id="dnsrecords">DNS Records</a></h3>
 					<p class="" style="">In order to advertise its availability, a server MUST publish four different kinds of DNS records:</p>
@@ -439,7 +439,7 @@
 						For the purpose of IoT Discovery we are interested only in the "xmpp-client" service.
 						An XMPP server MUST publish four different kinds of DNS records to advertise its availability using the services of type "xmpp-client".
 						An XMPP chat client (actually its mDNS daemon) can send out multicast DNS queries for services of type "xmpp-client".
-						<span class="strong">Note:</span> the service of type "xmpp-client" is the reservered name for client-to-server connections by IANA, as described in <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idm418385844688">10</a>].
+						<span class="strong">Note:</span> the service of type "xmpp-client" is the reservered name for client-to-server connections by IANA, as described in <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idm379240365232">10</a>].
 					</p>
 					<p class="" style="">So, for example, if the machine name is "pronto", the IP address is "10.2.1.188", and the personal information, the DNS records would be as follows:</p>
 					<p class="caption"><a name="example-8" id="example-8"></a>Example 8. IoT Discovery DNS Records Example</p><div class="indent"><pre class="prettyprint">
@@ -456,14 +456,14 @@
    "regis=registry"
    "provis=provisioning"
 					</pre></div>
-					<p class="" style="">The IPv4 and IPv6 addresses associated with a machine might vary depending on the local network to which the machine is connected. For example, on an Ethernet connection the physical address might be "192.168.0.100" but when the machine is connected to a wireless network the physical address might change to "10.10.1.188". See <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc3927">RFC 3927</a></span>  [<a href="#nt-idm418385815552">11</a>] for details.</p>
+					<p class="" style="">The IPv4 and IPv6 addresses associated with a machine might vary depending on the local network to which the machine is connected. For example, on an Ethernet connection the physical address might be "192.168.0.100" but when the machine is connected to a wireless network the physical address might change to "10.10.1.188". See <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc3927">RFC 3927</a></span>  [<a href="#nt-idm379240336096">11</a>] for details.</p>
 					<p class="" style="">If the machine name asserted by a client is already taken by another machine on the network, the client MUST assert a different machine name, which SHOULD be formed by adding the character "-" and digit "1" to the end of the machine name string (e.g., "pronto-1"), adding the character "-" and digit "2" if the resulting machine name is already taken (e.g., "pronto-2"), and similarly incrementing the digit until a unique machine name is constructed.</p>
 					<p class="" style="">
-						<span class="strong">Note:</span> DNS-SD enables service definitions to include a TXT record that specifies parameters to be used in the context of the relevant service type. For detailed information refer to <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm418385850240">12</a>] (Link-Local Messaging - TXT Record).
+						<span class="strong">Note:</span> DNS-SD enables service definitions to include a TXT record that specifies parameters to be used in the context of the relevant service type. For detailed information refer to <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm379240370784">12</a>] (Link-Local Messaging - TXT Record).
 					</p>
 				</div>
 				<div class="indent"><h3>3.3.2.2 <a name="txt" id="txt">IoT Discovery TXT Record Parameters Registry</a></h3>
-					<p class="" style="">The registration process is described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm418385810400">13</a>] (Link-Local Messaging - Registration Process).</p>
+					<p class="" style="">The registration process is described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm379240330944">13</a>] (Link-Local Messaging - Registration Process).</p>
 					<p class="" style="">The following submission registers parameters in use as of MONTH 201x. Refer to the registry itself for a complete and current list of parameters (this specification might or might not be revised when new parameters are registered).</p>
 					<p class="caption"><a name="example-9" id="example-9"></a>Example 9. IoT Discovery TXT Record Parameters Registry</p><div class="indent"><pre class="prettyprint">
 						
@@ -499,7 +499,7 @@
 				
 			</div>
 			<p class="" style="">
-				<span class="strong">Note:</span> If server-less messaging is to be used, as described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm418385806224">14</a>] this step can be used to find the Thing Registry and optionally the
+				<span class="strong">Note:</span> If server-less messaging is to be used, as described in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0174.html">Link-Local Messaging</a></span>  [<a href="#nt-idm379240326768">14</a>] this step can be used to find the Thing Registry and optionally the
 				Provisioning Server and other peers it want to connect to. The next section can thus be skipped.
 			</p>
 		</div>
@@ -508,13 +508,13 @@
 				Once an XMPP Server has been found, a connection can be made. If multiple XMPP Servers are found, the client is free to choose the one that best suits its purposes.
 			</p>
 			<p class="" style="">
-				If the Thing does not have an account already, an account can be registered along what is specified in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration</a></span>  [<a href="#nt-idm418385790512">15</a>]. If multiple servers are available, the first XMPP server that
+				If the Thing does not have an account already, an account can be registered along what is specified in <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration</a></span>  [<a href="#nt-idm379240311056">15</a>]. If multiple servers are available, the first XMPP server that
 				allows account creation can be used.
 			</p>
 		</div>
 		<div class="indent"><h3>3.5 <a name="findingregistry" id="findingregistry">Finding Thing Registry</a></h3>
 			<p class="" style="">
-				If a Thing Registry is not preconfigured, one must be found. A Thing Registry can be hosted either as a server component using <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0114.html">Jabber Component Protocol</a></span>  [<a href="#nt-idm418385783712">16</a>] or as an XMPP Client accessible through
+				If a Thing Registry is not preconfigured, one must be found. A Thing Registry can be hosted either as a server component using <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0114.html">Jabber Component Protocol</a></span>  [<a href="#nt-idm379240304256">16</a>] or as an XMPP Client accessible through
 				a JID. The following lists methods to obtaining the Component Address or JID for the Thing Registry. Note that the last one has <a href="#security">security considerations</a> 
 				that need to be taken into account, if implemented.
 			</p>
@@ -552,8 +552,8 @@
          &lt;property id='MODEL' value="IMC"/&gt;
          &lt;property id='V' value="1.2" type="xsd:float"/&gt;
          &lt;property id='KEY' value"4857402340298342"/&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='55.701'/&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='12.552'/&gt;
+         &lt;property id='LAT' value='55.701'/&gt;
+         &lt;property id='LONG' value='12.552'/&gt;
       &lt;/register&gt;
    &lt;/iq&gt;
    
@@ -1000,8 +1000,8 @@
               defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'&gt;
          &lt;property id='KEY' value=''/&gt;&lt;!-- will be removed --&gt;
          &lt;property id='CLASS' value='PLC'/&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='-33.008055'/&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='-71.519722'/&gt;
+         &lt;property id='LAT' value='-33.008055'/&gt;
+         &lt;property id='LONG' value='-71.519722'/&gt;
       &lt;/update&gt;
    &lt;/iq&gt;
 			</pre></div>
@@ -1025,8 +1025,8 @@
               defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'&gt;
          &lt;property id='KEY' value=''/&gt;&lt;!-- will be removed --&gt;
          &lt;property id='CLASS' value='PLC'/&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat'&gt;-33.008055&lt;/property&gt;
-         &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#long'&gt;-71.519722&lt;/property&gt;
+         &lt;property id='LAT'&gt;-33.008055&lt;/property&gt;
+         &lt;property id='LONG'&gt;-71.519722&lt;/property&gt;
       &lt;/update&gt;
    &lt;/iq&gt;
 			</pre></div>
@@ -1336,8 +1336,8 @@
              &lt;property id='MODEL' value='IMC'/&gt;
              &lt;property id='V' value='1.2' type='xsd:float'/&gt;
              &lt;property id='CLASS' value='PLC'/&gt;
-             &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/&gt;
-             &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/&gt;
+             &lt;property id='LAT' value='51.1234'/&gt;
+             &lt;property id='LONG' value='24.123'/&gt;
          &lt;/thing&gt;
          ...
       &lt;/found&gt;
@@ -1364,8 +1364,8 @@
              &lt;property id='MODEL' value='IMC'/&gt;
              &lt;property id='V' value='1.2' type='xsd:float'/&gt;
              &lt;property id='CLASS' value='PLC'/&gt;
-             &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#lat' value='51.1234'/&gt;
-             &lt;property id='http://www.w3.org/2003/01/geo/wgs84_pos#long' value='24.123'/&gt;
+             &lt;property id='LAT' value='51.1234'/&gt;
+             &lt;property id='LONG' value='24.123'/&gt;
           &lt;/thing&gt;
          ...
       &lt;/found&gt;
@@ -1527,7 +1527,7 @@
        <a name="support" id="support">Determining Support</a></h2>
 		<p class="" style="">
 			If an entity is a Thing Registry and supports the protocol specified herein, it MUST advertise that fact by returning a feature of "urn:xmpp:iot:discovery" in response
-			to <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery</a></span>  [<a href="#nt-idm418385521696">17</a>] information requests.
+			to <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery</a></span>  [<a href="#nt-idm379240041584">17</a>] information requests.
 		</p>
 		<p class="caption"><a name="example-54" id="example-54"></a>Example 54. Service discovery information request</p><div class="indent"><pre class="prettyprint">
 			
@@ -1681,7 +1681,7 @@
        <a name="security" id="security">Security Considerations</a></h2>
 		<div class="indent"><h3>6.1 <a name="jcp" id="jcp">Jabber Components Protocol</a></h3>
 			<p class="" style="">
-				The <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0114.html">Jabber Component Protocol</a></span>  [<a href="#nt-idm418385785936">18</a>] provides an elegant way to introduce external services as server components using a third port into the server (the first two being the client-to-server port
+				The <span class="ref" style=""><a href="http://xmpp.org/extensions/xep-0114.html">Jabber Component Protocol</a></span>  [<a href="#nt-idm379240306480">18</a>] provides an elegant way to introduce external services as server components using a third port into the server (the first two being the client-to-server port
 				and the server-to-server port). But since XEP-0114 is historical, meaning it is not guaranteed to conform to v1.0 of the XMPP specification, it has some serious security
 				issues:
 			</p>
@@ -1785,7 +1785,7 @@
 		</div>
 	<h2>7.
        <a name="iana" id="iana">IANA Considerations</a></h2>
-		<p class="" style="">This document requires no interaction with the <span class="ref" style=""><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idm418385444512">19</a>].</p>
+		<p class="" style="">This document requires no interaction with the <span class="ref" style=""><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idm379239965456">19</a>].</p>
 	<h2>8.
        <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
 		<p class="" style="">
@@ -1995,9 +1995,9 @@
         JabberID: 
         <a href="xmpp:TBD">TBD</a><br />
         URI: 
-        <a href="http://www-rnks.informatik.tu-cottbus.de/~rklauck">http://www-rnks.informatik.tu-cottbus.de/~rklauck</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2012 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idm418385961216" id="nt-idm418385961216">1</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idm418385963344" id="nt-idm418385963344">2</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idm418385952672" id="nt-idm418385952672">3</a>. XEP-0122: Data Forms Validation &lt;<a href="http://xmpp.org/extensions/xep-0122.html">http://xmpp.org/extensions/xep-0122.html</a>&gt;.</p><p><a name="nt-idm418385947936" id="nt-idm418385947936">4</a>. XEP-0137: Publishing Stream Initiation Requests &lt;<a href="http://xmpp.org/extensions/xep-0137.html">http://xmpp.org/extensions/xep-0137.html</a>&gt;.</p><p><a name="nt-idm418385943232" id="nt-idm418385943232">5</a>. XEP-0141: Data Forms Layout &lt;<a href="http://xmpp.org/extensions/xep-0141.html">http://xmpp.org/extensions/xep-0141.html</a>&gt;.</p><p><a name="nt-idm418385875232" id="nt-idm418385875232">6</a>. 
+        <a href="http://www-rnks.informatik.tu-cottbus.de/~rklauck">http://www-rnks.informatik.tu-cottbus.de/~rklauck</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2012 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idm379240481808" id="nt-idm379240481808">1</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idm379240483936" id="nt-idm379240483936">2</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idm379240473216" id="nt-idm379240473216">3</a>. XEP-0122: Data Forms Validation &lt;<a href="http://xmpp.org/extensions/xep-0122.html">http://xmpp.org/extensions/xep-0122.html</a>&gt;.</p><p><a name="nt-idm379240468480" id="nt-idm379240468480">4</a>. XEP-0137: Publishing Stream Initiation Requests &lt;<a href="http://xmpp.org/extensions/xep-0137.html">http://xmpp.org/extensions/xep-0137.html</a>&gt;.</p><p><a name="nt-idm379240463776" id="nt-idm379240463776">5</a>. XEP-0141: Data Forms Layout &lt;<a href="http://xmpp.org/extensions/xep-0141.html">http://xmpp.org/extensions/xep-0141.html</a>&gt;.</p><p><a name="nt-idm379240395776" id="nt-idm379240395776">6</a>. 
 						RFC 3942: Reclassifying Dynamic Host Configuration Protocol version 4 (DHCPv4) Options &lt;<a href="http://tools.ietf.org/html/rfc3942">http://tools.ietf.org/html/rfc3942</a>&gt;.
-					</p><p><a name="nt-idm418385861920" id="nt-idm418385861920">7</a>. RFC 1035: Domain Names - Implementation and Specification &lt;<a href="http://tools.ietf.org/html/rfc1035">http://tools.ietf.org/html/rfc1035</a>&gt;.</p><p><a name="nt-idm418385848144" id="nt-idm418385848144">8</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm418385842480" id="nt-idm418385842480">9</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idm418385844688" id="nt-idm418385844688">10</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idm418385815552" id="nt-idm418385815552">11</a>. RFC 3927: Dynamic Configuration of IPv4 Link-Local Addresses &lt;<a href="http://tools.ietf.org/html/rfc3927">http://tools.ietf.org/html/rfc3927</a>&gt;.</p><p><a name="nt-idm418385850240" id="nt-idm418385850240">12</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm418385810400" id="nt-idm418385810400">13</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm418385806224" id="nt-idm418385806224">14</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm418385790512" id="nt-idm418385790512">15</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idm418385783712" id="nt-idm418385783712">16</a>. XEP-0114: Jabber Component Protocol &lt;<a href="http://xmpp.org/extensions/xep-0114.html">http://xmpp.org/extensions/xep-0114.html</a>&gt;.</p><p><a name="nt-idm418385521696" id="nt-idm418385521696">17</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idm418385785936" id="nt-idm418385785936">18</a>. XEP-0114: Jabber Component Protocol &lt;<a href="http://xmpp.org/extensions/xep-0114.html">http://xmpp.org/extensions/xep-0114.html</a>&gt;.</p><p><a name="nt-idm418385444512" id="nt-idm418385444512">19</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.4? (2015-02-04)</h4><div class="indent">
+					</p><p><a name="nt-idm379240382464" id="nt-idm379240382464">7</a>. RFC 1035: Domain Names - Implementation and Specification &lt;<a href="http://tools.ietf.org/html/rfc1035">http://tools.ietf.org/html/rfc1035</a>&gt;.</p><p><a name="nt-idm379240368688" id="nt-idm379240368688">8</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm379240363024" id="nt-idm379240363024">9</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idm379240365232" id="nt-idm379240365232">10</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idm379240336096" id="nt-idm379240336096">11</a>. RFC 3927: Dynamic Configuration of IPv4 Link-Local Addresses &lt;<a href="http://tools.ietf.org/html/rfc3927">http://tools.ietf.org/html/rfc3927</a>&gt;.</p><p><a name="nt-idm379240370784" id="nt-idm379240370784">12</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm379240330944" id="nt-idm379240330944">13</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm379240326768" id="nt-idm379240326768">14</a>. XEP-0174: Link-Local Messaging &lt;<a href="http://xmpp.org/extensions/xep-0174.html">http://xmpp.org/extensions/xep-0174.html</a>&gt;.</p><p><a name="nt-idm379240311056" id="nt-idm379240311056">15</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idm379240304256" id="nt-idm379240304256">16</a>. XEP-0114: Jabber Component Protocol &lt;<a href="http://xmpp.org/extensions/xep-0114.html">http://xmpp.org/extensions/xep-0114.html</a>&gt;.</p><p><a name="nt-idm379240041584" id="nt-idm379240041584">17</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idm379240306480" id="nt-idm379240306480">18</a>. XEP-0114: Jabber Component Protocol &lt;<a href="http://xmpp.org/extensions/xep-0114.html">http://xmpp.org/extensions/xep-0114.html</a>&gt;.</p><p><a name="nt-idm379239965456" id="nt-idm379239965456">19</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.4? (2015-02-04)</h4><div class="indent">
                 <p class="" style="">
                     Rewrote pieces that describe how the meta-information is formatted and how things are searched.
                 </p>
