@@ -812,7 +812,7 @@ Author: Peter Waher
        id='4'>
       <mine xmlns='urn:xmpp:iot:discovery'
             public='false'
-            defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>>
+            defaultns='http://xmpp-iot.github.io/xmpp-iot-common#'>
          <property id='SN' value="394872348732948723"/>
          <property id='MAN' resource='http://www.ktc.se'/>
          <property id='MODEL' value="IMC"/>
